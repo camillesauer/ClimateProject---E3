@@ -1,4 +1,4 @@
-<!-- app/templates/admin/departments/departments.html -->
+<!-- app/templates/admin/images/images.html -->
 
 {% import "bootstrap/utils.html" as utils %}
 {% extends "base.html" %}
@@ -19,7 +19,6 @@
               <thead>
                 <tr>
                   <th width="15%"> Name </th>
-                  <th width="40%"> Description </th>
                   <th width="15%"> Employee Count </th>
                   <th width="15%"> Edit </th>
                   <th width="15%"> Delete </th>
@@ -29,7 +28,6 @@
               {% for img in images %}
                 <tr>
                   <td> {{ img.name }} </td>
-                  <td> {{ img.mimetype }} </td>
                   <td>
                     {% if img.users %}
                       {{ img.users.count() }}
@@ -58,7 +56,7 @@
             <h3> No departments have been added. </h3>
             <hr class="intro-divider">
         {% endif %}
-          <a href="{{ url_for('admin.upload_files') }}" class="btn btn-default btn-lg">
+          <a href="{{ url_for('admin.add_img') }}" class="btn btn-default btn-lg">
             <i class="fa fa-plus"></i>
             Add Img
           </a>

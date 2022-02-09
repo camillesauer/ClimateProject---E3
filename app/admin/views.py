@@ -32,7 +32,7 @@ def list_images():
 
 @admin.route('/images/add', methods=['GET', 'POST'])
 @login_required
-def add_image():
+def add_img():
     """
     Add a image to the database
     """
@@ -42,8 +42,7 @@ def add_image():
 
     form = ImgForm()
     if form.validate_on_submit():
-        img = Img(name=form.name.data,
-                                mimetype=form.mimetype.data)
+        img = Img(name=form.name.data, mimetype=form.mimetype.data)
         try:
             # add img to the database
             db.session.add(img)
@@ -54,7 +53,7 @@ def add_image():
             flash('Error: img name already exists.')
 
         # redirect to imgs page
-        return redirect(url_for('admin.list_imgs'))
+        return redirect(url_for('admin.list_images'))
 
     # load img template
     return render_template('admin/images/image.html', action="Add",
@@ -77,7 +76,7 @@ def edit_img(id):
         img.name = form.name.data
         img.description = form.mimetype.data
         db.session.commit()
-        flash('You have successfully edited the department.')
+        flash('You have successfully edited the img.')
 
         # redirect to the images page
         return redirect(url_for('admin.list_images'))

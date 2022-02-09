@@ -35,8 +35,4 @@ def create_app(config_name):
     from .home import home as home_blueprint
     app.register_blueprint(home_blueprint)
 
-    app.config['MAX_CONTENT_LENGTH'] = 2 * 1024 * 1024
-    app.config['UPLOAD_EXTENSIONS'] = ['.jpg', '.png', '.gif']
-    app.config['UPLOAD_PATH'] = 'uploads'
-
     return app

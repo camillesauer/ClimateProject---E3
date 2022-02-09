@@ -1,12 +1,12 @@
-<!-- app/templates/admin/departments/department.html -->
+<!-- app/templates/admin/images/image.html -->
 
 {% import "bootstrap/wtf.html" as wtf %}
 {% extends "base.html" %}
 {% block title %}
     {% if add_img %}
-        Add Department
+        Add Img
     {% else %}
-        Edit Department
+        Edit Img
     {% endif %}
 {% endblock %}
 {% block body %}
@@ -16,9 +16,9 @@
       <div class="inner">
         <div class="center">
             {% if add_img %}
-                <h1>Add Department</h1>
+                <h1>Add Img</h1>
             {% else %}
-                <h1>Edit Department</h1>
+                <h1>Edit Img</h1>
             {% endif %}
             <br/>
             {{ wtf.quick_form(form) }}
