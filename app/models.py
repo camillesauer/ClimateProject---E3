@@ -21,6 +21,7 @@ class User(UserMixin, db.Model):
     password_hash = db.Column(db.String(128))
     role_id = db.Column(db.Integer, db.ForeignKey('roles.id'))
     is_admin = db.Column(db.Boolean, default=False)
+    images = db.relationship('Img', backref='user', lazy=True)
 
     @property
     def password(self):
@@ -77,7 +78,7 @@ class Img(db.Model):
     img = db.Column(db.String(1000), unique=True, nullable=False)
     name = db.Column(db.String(1000), nullable=False)
     mimetype = db.Column(db.String(1000), nullable=False)
-    users = db.relationship('User', backref='img',
-                            lazy='dynamic')
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
+
     def __repr__(self):
         return '<Img: {}>'.format(self.name)

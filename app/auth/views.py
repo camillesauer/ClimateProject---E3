@@ -35,23 +35,22 @@ def register():
 
 @auth.route('/login', methods=['GET', 'POST'])
 def login():
-    """
-    Handle requests to the /login route
-    Log a user in through the login form
-    """
     form = LoginForm()
     if form.validate_on_submit():
 
-        # check whether user exists in the database and whether
+        # check whether employee exists in the database and whether
         # the password entered matches the password in the database
-        user = User.query.filter_by(email=form.email.data).first()
-        if user is not None and user.verify_password(
+        employee = User.query.filter_by(email=form.email.data).first()
+        if employee is not None and employee.verify_password(
                 form.password.data):
-            # log user in
-            login_user(user)
+            # log employee in
+            login_user(employee)
 
-            # redirect to the dashboard page after login
-            return redirect(url_for('home.dashboard'))
+            # redirect to the appropriate dashboard page
+            if employee.is_admin:
+                return redirect(url_for('home.admin_dashboard'))
+            else:
+                return redirect(url_for('home.dashboard'))
 
         # when login details are incorrect
         else:
