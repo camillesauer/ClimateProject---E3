@@ -1,4 +1,5 @@
 # config.py
+
 class Config(object):
     """
     Common configurations
@@ -19,10 +20,9 @@ class ProductionConfig(Config):
     Production configurations
     """
 
-    #DEBUG = False
+    DEBUG = False
 
 app_config = {
-    'development': DevelopmentConfig
-    #'production': ProductionConfig
+    'development': DevelopmentConfig,
+    'production': ProductionConfig
 }
-
