@@ -2,6 +2,8 @@
 
 from flask import abort, flash, redirect, render_template, url_for
 from flask_login import current_user, login_required
+from flask import Flask, request, Response
+from werkzeug.utils import secure_filename
 
 from . import admin
 from . forms import ImgForm
@@ -42,18 +44,14 @@ def add_img():
 
     form = ImgForm()
     if form.validate_on_submit():
-        img = Img(name=form.name.data, mimetype=form.mimetype.data)
-        try:
-            # add img to the database
-            db.session.add(img)
-            db.session.commit()
-            flash('You have successfully added a new img.')
-        except:
-            # in case img name already exists
-            flash('Error: img name already exists.')
-
+        filename = secure_filename(form.file.data.filename)
+        form.file.data.save('uploads/' + filename)
+        img = Img(name=form.name.data, file=form.file.data, vendorid=current_user.id, image=filename)
+        db.session.add(img)
+        db.session.commit()
+        flash("Congratulations, your item has been added")
         # redirect to imgs page
-        return redirect(url_for('admin.list_images'))
+        return redirect(url_for('upload'))
 
     # load img template
     return render_template('admin/images/image.html', action="Add",
