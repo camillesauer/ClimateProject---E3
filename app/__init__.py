@@ -23,7 +23,8 @@ def create_app(config_name):
     login_manager.login_message = "You must be logged in to access this page."
     login_manager.login_view = "auth.login"
     migrate = Migrate(app, db)
-
+    app.config['MAX_CONTENT_LENGTH'] = 2 * 1024 * 1024
+    app.config['UPLOAD_EXTENSIONS'] = ['.jpg', '.png', '.gif']
     from app import models
 
     from .admin import admin as admin_blueprint

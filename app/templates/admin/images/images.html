@@ -49,6 +49,11 @@
               {% endfor %}
               </tbody>
             </table>
+            <div>
+              {% for img in images %}
+              <img src="{{ url_for('static', filename='uploads/' + img.img) }}" alt="">
+              {% endfor %}
+            </div>
           </div>
           <div style="text-align: center">
         {% else %}

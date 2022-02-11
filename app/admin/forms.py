@@ -7,7 +7,7 @@ from wtforms.validators import DataRequired
 
 class ImgForm(FlaskForm):
     """
-    Form for admin to add or edit a department
+    Form for admin to add or edit an image
     """
     name = StringField('Name', validators=[DataRequired()])
     file = FileField()

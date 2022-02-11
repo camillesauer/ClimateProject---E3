@@ -2,9 +2,8 @@
 
 from flask import abort, flash, redirect, render_template, url_for
 from flask_login import current_user, login_required
-from flask import Flask, request, Response
 from werkzeug.utils import secure_filename
-
+import os
 from . import admin
 from . forms import ImgForm
 from .. import db
@@ -44,14 +43,16 @@ def add_img():
 
     form = ImgForm()
     if form.validate_on_submit():
+        print('form')
         filename = secure_filename(form.file.data.filename)
-        form.file.data.save('uploads/' + filename)
-        img = Img(name=form.name.data, file=form.file.data, vendorid=current_user.id, image=filename)
+        print(filename)
+        form.file.data.save(os.path.join('app/static/uploads/', filename))
+        img = Img(name=form.name.data, user_id=current_user.id, img=filename, mimetype=form.file.data.mimetype)
         db.session.add(img)
         db.session.commit()
         flash("Congratulations, your item has been added")
         # redirect to imgs page
-        return redirect(url_for('upload'))
+        return redirect(url_for('admin.list_images'))
 
     # load img template
     return render_template('admin/images/image.html', action="Add",
@@ -72,14 +73,12 @@ def edit_img(id):
     form = ImgForm(obj=img)
     if form.validate_on_submit():
         img.name = form.name.data
-        img.description = form.mimetype.data
         db.session.commit()
         flash('You have successfully edited the img.')
 
         # redirect to the images page
         return redirect(url_for('admin.list_images'))
 
-    form.mimetype.data = img.mimetype
     form.name.data = img.name
     return render_template('admin/images/image.html', action="Edit",
                            add_img=add_img, form=form,
@@ -99,6 +98,6 @@ def delete_img(id):
     flash('You have successfully deleted the img.')
 
     # redirect to the imgs page
-    return redirect(url_for('admin.list_imgs'))
+    return redirect(url_for('admin.list_images'))
 
     return render_template(title="Delete Img")
