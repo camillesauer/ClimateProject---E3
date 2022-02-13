@@ -18,7 +18,6 @@
               <thead>
                 <tr>
                   <th width="15%"> Name </th>
-                  <th width="15%"> Employee Count </th>
                   <th width="15%"> Edit </th>
                   <th width="15%"> Delete </th>
                 </tr>
@@ -27,13 +26,6 @@
               {% for img in images %}
                 <tr>
                   <td> {{ img.name }} </td>
-                  <td>
-                    {% if img.users %}
-                      {{ img.users.count() }}
-                    {% else %}
-                      0
-                    {% endif %}
-                  </td>
                   <td>
                     <a href="{{ url_for('admin.edit_img', id=img.id) }}">
                       <i class="fa fa-pencil"></i> Edit
@@ -48,7 +40,7 @@
               {% endfor %}
               </tbody>
             </table>
-            <div>
+            <div class="littlepic gallery">
               {% for img in images %}
               <img src="{{ url_for('static', filename='uploads/' + img.img) }}" alt="">
               {% endfor %}

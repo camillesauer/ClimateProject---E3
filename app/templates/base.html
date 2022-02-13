@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>{{ title }} | Project Dream Team</title>
+    <title>{{ title }} | Iceberg Classification</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
     <link rel="shortcut icon" href="{{ url_for('static', filename='img/favicon.ico') }}">
@@ -17,7 +17,7 @@
                   <span class="icon-bar"></span>
                   <span class="icon-bar"></span>
               </button>
-              <a class="navbar-brand topnav" href="{{ url_for('home.homepage') }}">Climate Central</a>
+              <a class="navbar-brand topnav" href="{{ url_for('home.homepage') }}">Iceberg Classification</a>
           </div>
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
               <!-- app/templates/base.html -->
@@ -44,7 +44,7 @@
           </div>
         </div>
     </nav>
-    <div class="wrapper">
+    <div class="wrapper imghome">
       {% block body %}
       {% endblock %}
       <div class="push"></div>
@@ -60,7 +60,7 @@
                         <li class="footer-menu-divider">⋅</li>
                         <li><a href="{{ url_for('auth.login') }}">Login</a></li>
                     </ul>
-                    <p class="copyright text-muted small">Copyright © 2016. All Rights Reserved</p>
+                    <p class="copyright text-muted small">Copyright © 2022. All Rights Reserved</p>
                 </div>
             </div>
         </div>

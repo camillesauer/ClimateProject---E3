@@ -71,9 +71,21 @@ p.copyright {
     padding-bottom: 50px;
     text-align: center;
     color: #f8f8f8;
-    background: url(../img/intro-bg.jpg) no-repeat center center;
+    background: url(../background/iceberg.jpg) no-repeat center center;
     background-size: cover;
+    height: 1000px !important;
     height: 100%;
+}
+
+.littlepic img{
+width: 100px;
+height: auto;
+}
+
+.gallery {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 15px;
 }
 
 .intro-message {
@@ -103,9 +115,9 @@ p.copyright {
 
 .wrapper {
   min-height: 100%;
-  height: auto !important;
   height: 100%;
   margin: 0 auto -4em;
+  height: auto;
 }
 
 /* app/static/css/style.css */
