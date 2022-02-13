@@ -128,5 +128,6 @@ dmypy.json
 # Pyre type checker
 .pyre/
 /credentials.py
+/tests.py
 /Data analysis/ship-and-iceberg-images/
 /instance/config.py
