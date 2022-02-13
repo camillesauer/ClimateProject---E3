@@ -1,11 +1,11 @@
 # app/admin/forms.py
-
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField
 from flask_wtf.file import FileField
 from wtforms.validators import DataRequired
 from ..models import Role, Img
 from wtforms_sqlalchemy.fields import QuerySelectField
+
 
 class ImgForm(FlaskForm):
     """
@@ -24,7 +24,6 @@ class RoleForm(FlaskForm):
     description = StringField('Description', validators=[DataRequired()])
     submit = SubmitField('Submit')
 
-# app/admin/forms.py
 
 class UserAssignForm(FlaskForm):
     """
