@@ -208,7 +208,7 @@ def list_users():
 @login_required
 def assign_user(id):
     """
-    Assign a department and a role to a user
+    Assign an image and a role to a user
     """
     check_admin()
 
