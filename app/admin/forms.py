@@ -9,7 +9,7 @@ from wtforms_sqlalchemy.fields import QuerySelectField
 
 class ImgForm(FlaskForm):
     """
-    Form for admin to add or edit an image
+    Form for user to add or edit an image
     """
     name = StringField('Name', validators=[DataRequired()])
     file = FileField()

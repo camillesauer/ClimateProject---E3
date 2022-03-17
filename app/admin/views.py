@@ -2,11 +2,15 @@
 from flask import abort, flash, redirect, render_template, url_for
 from flask_login import current_user, login_required
 from werkzeug.utils import secure_filename
-import os
 from . import admin, user
 from . forms import ImgForm, UserAssignForm, RoleForm
 from .. import db
 from ..models import Img, Role, User
+import sys
+import os
+sys.path.append(os.path.abspath("/home/apprenant/PycharmProjects/ClimateProject---E3/model"))
+from model.load import predict
+
 
 
 def check_admin():
@@ -25,14 +29,14 @@ def list_images():
     """
     images = Img.query.filter_by(user_id=current_user.id).all()
     return render_template('admin/images/images.html',
-                           images=images, title="images")
+                           images=images,title="images")
 
 
 @admin.route('/images/add', methods=['GET', 'POST'])
 @login_required
 def add_img():
     """
-    Add a image to the database
+    Add an image to the database
     """
     add_img = True
 
@@ -42,11 +46,12 @@ def add_img():
         filename = secure_filename(form.file.data.filename)
         print(filename)
         form.file.data.save(os.path.join('app/static/uploads/', filename))
-        img = Img(name=form.name.data, user_id=current_user.id, img=filename, mimetype=form.file.data.mimetype)
+        img = Img(name=filename, user_id=current_user.id, img=filename, mimetype=form.file.data.mimetype)
         db.session.add(img)
         db.session.commit()
+        prediction=predict(os.path.join('app/static/uploads/', filename))
         flash("Congratulations, your item has been added")
-        # redirect to imgs page
+        # redirect to img page
         return redirect(url_for('admin.list_images'))
 
     # load img template

@@ -131,3 +131,5 @@ dmypy.json
 /tests.py
 /Data analysis/ship-and-iceberg-images/
 /instance/config.py
+/scipy-1.8.0-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+/numpy-1.22.3-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
