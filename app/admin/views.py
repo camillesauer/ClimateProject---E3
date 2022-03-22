@@ -20,8 +20,7 @@ def check_admin():
     if not current_user.is_admin:
         abort(403)
 
-
-@admin.route('/images', methods=['GET', 'POST'])
+@admin.route('/images/', methods=['GET'])
 @login_required
 def list_images():
     """
@@ -42,14 +41,12 @@ def add_img():
 
     form = ImgForm()
     if form.validate_on_submit():
-        print('form')
         filename = secure_filename(form.file.data.filename)
-        print(filename)
         form.file.data.save(os.path.join('app/static/uploads/', filename))
-        img = Img(name=filename, user_id=current_user.id, img=filename, mimetype=form.file.data.mimetype)
+        prediction = predict(os.path.join('app/static/uploads/', filename))
+        img = Img(name=filename, user_id=current_user.id, img=filename, mimetype=form.file.data.mimetype, prediction=prediction[0], out=prediction[1])
         db.session.add(img)
         db.session.commit()
-        prediction=predict(os.path.join('app/static/uploads/', filename))
         flash("Congratulations, your item has been added")
         # redirect to img page
         return redirect(url_for('admin.list_images'))

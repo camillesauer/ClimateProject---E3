@@ -78,6 +78,8 @@ class Img(db.Model):
     img = db.Column(db.String(1000), unique=True, nullable=False)
     name = db.Column(db.String(1000), nullable=False)
     mimetype = db.Column(db.String(1000), nullable=False)
+    prediction = db.Column(db.String(1000), nullable=True)
+    out = db.Column(db.String(1000), nullable=True)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
 
     def __repr__(self):

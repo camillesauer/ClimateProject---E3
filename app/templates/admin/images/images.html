@@ -18,6 +18,8 @@
               <thead>
                 <tr>
                   <th width="15%"> Name </th>
+                  <th width="15%"> Prediction </th>
+                  <th width="15%"> Performance </th>
                   <th width="15%"> Edit </th>
                   <th width="15%"> Delete </th>
                 </tr>
@@ -26,6 +28,8 @@
               {% for img in images %}
                 <tr>
                   <td> {{ img.name }} </td>
+                  <td> {{ img.prediction }} </td>
+                  <td> {{ img.out }} </td>
                   <td>
                     <a href="{{ url_for('admin.edit_img', id=img.id) }}">
                       <i class="fa fa-pencil"></i> Edit

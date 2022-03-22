@@ -31,12 +31,11 @@ def init():
 
 def predict(path):
     x = imread(path)
-    print(x)
     x = np.resize(x,(1,75,75,3))
     model = init()
     out = model.predict(x)
     print(out)
     print(np.argmax(out,axis=1))
-    response = np.array_str(np.argmax(out,axis=1))
-    return response
+    response = np.argmax(out,axis=1)
+    return [response[0], out[0][0]]
 
