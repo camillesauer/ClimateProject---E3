@@ -12,16 +12,16 @@ from app.models import Img
 
 
 def init():
-    json_file = open('/home/apprenant/PycharmProjects/ClimateProject---E3/model/model.json', 'r')
+    json_file = open('/home/apprenant/PycharmProjects/ClimateProject---E3/model/model_tuner.json', 'r')
     loaded_model_json = json_file.read()
     json_file.close()
     loaded_model_json = model_from_json(loaded_model_json)
     #load weights into new model
-    loaded_model_json.load_weights("/home/apprenant/PycharmProjects/ClimateProject---E3/model/model.h5")
+    loaded_model_json.load_weights("/home/apprenant/PycharmProjects/ClimateProject---E3/model/model_tuner.h5")
     print("Loaded Model from disk")
 
     #compile and evaluate loaded model
-    loaded_model_json.compile(loss='binary_crossentropy',optimizer='adam',metrics=['accuracy'])
+    loaded_model_json.compile(loss='sparse_categorical_crossentropy',optimizer='adam',metrics=['accuracy'])
     #loss,accuracy = model.evaluate(X_test,y_test)
     #print('loss:', loss)
     #print('accuracy:', accuracy)

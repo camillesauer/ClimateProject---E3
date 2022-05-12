@@ -166,6 +166,7 @@ class TestViews(TestBase):
         self.assertEqual(response.status_code, 302)
         self.assertRedirects(response, redirect_url)
 
+
 class TestErrorPages(TestBase):
 
     def test_403_forbidden(self):

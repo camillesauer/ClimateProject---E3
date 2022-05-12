@@ -5,7 +5,7 @@ class Config(object):
     Common configurations
     """
 
-    DEBUG = True
+    DEBUG = False
 
 class DevelopmentConfig(Config):
     """
