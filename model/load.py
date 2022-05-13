@@ -22,10 +22,6 @@ def init():
 
     #compile and evaluate loaded model
     loaded_model_json.compile(loss='sparse_categorical_crossentropy',optimizer='adam',metrics=['accuracy'])
-    #loss,accuracy = model.evaluate(X_test,y_test)
-    #print('loss:', loss)
-    #print('accuracy:', accuracy)
-
     return loaded_model_json
 
 
@@ -35,7 +31,7 @@ def predict(path):
     model = init()
     out = model.predict(x)
     print(out)
-    print(np.argmax(out,axis=1))
     response = np.argmax(out,axis=1)
+    print(response)
     return [response[0], out[0][0]]
 

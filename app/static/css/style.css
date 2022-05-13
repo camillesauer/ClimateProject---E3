@@ -73,8 +73,12 @@ p.copyright {
     color: #f8f8f8;
     background: url(../background/iceberg.jpg) no-repeat center center;
     background-size: cover;
-    height: 1000px !important;
+    height: 1200px !important;
     height: 100%;
+}
+
+iframe{
+width=1140px;
 }
 
 .littlepic img{
