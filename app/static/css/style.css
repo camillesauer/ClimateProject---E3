@@ -11,11 +11,11 @@ body, h1, h2, h3 {
 }
 
 a, .navbar-default .navbar-brand, .navbar-default .navbar-nav>li>a {
-  color: #aec251;
+  color: #000492;
 }
 
 a:hover, .navbar-default .navbar-brand:hover, .navbar-default .navbar-nav>li>a:hover {
-  color: #687430;
+  color: #9193b8;
 }
 
 footer {
@@ -36,8 +36,8 @@ p.copyright {
 }
 
 .btn-default {
-    border-color: #aec251;
-    color: #aec251;
+    border-color: #000492;
+    color: #000492;
 }
 
 .btn-default:hover {
@@ -48,6 +48,7 @@ p.copyright {
     margin: auto;
     width: 50%;
     padding: 10px;
+    text-align: center;
 }
 
 .content-section {
@@ -67,13 +68,12 @@ p.copyright {
 }
 
 .intro-header {
-    padding-top: 50px;
+    padding-top: 20px;
     padding-bottom: 50px;
     text-align: center;
     color: #f8f8f8;
-    background: url(../background/iceberg.jpg) no-repeat center center;
+    background: url(../background/dddd.jpg) no-repeat center center;
     background-size: cover;
-    height: 1200px !important;
     height: 100%;
 }
 
@@ -94,8 +94,8 @@ height: auto;
 
 .intro-message {
     position: relative;
-    padding-top: 20%;
-    padding-bottom: 20%;
+    padding-top: 10%;
+    padding-bottom: 10%;
 }
 
 .intro-message > h1 {
@@ -117,11 +117,30 @@ height: auto;
     font-size: 14px;
 }
 
+th{
+font-color: blue;
+background-color: white;
+text-align: center;
+font-style: regular;
+}
+
+td{
+text-align: center;
+background-color:white;
+}
+
+.ccc{
+margin-top:50px;
+background-color: white;
+padding: 50px;
+border-radius: 20px;
+}
+
 .wrapper {
   min-height: 100%;
-  height: 100%;
+  height: 1500px;
   margin: 0 auto -4em;
-  height: auto;
+  background-color: #000492;
 }
 
 /* app/static/css/style.css */
@@ -141,4 +160,5 @@ height: auto;
 .inner {
     margin-left: auto;
     margin-right: auto;
+    margin-bottom: 20px;
 }

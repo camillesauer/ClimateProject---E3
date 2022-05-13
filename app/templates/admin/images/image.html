@@ -13,15 +13,15 @@
  <div class="outer">
     <div class="middle">
       <div class="inner">
-        <div class="center">
+        <div class="center ccc">
             {% if add_img %}
-                <h1>Add Img</h1>
+                <h1>Please upload your image.</h1>
+            <img style="text-align:center" src="https://res.cloudinary.com/dft5iblyz/image/upload/v1652436935/Untitled_design_5_cbhtbl.png">
             {% else %}
                 <h1>Edit Img</h1>
             {% endif %}
             <br/>
             {{ wtf.quick_form(form) }}
-
         </div>
       </div>
     </div>

@@ -11,8 +11,8 @@ class ImgForm(FlaskForm):
     """
     Form for user to add or edit an image
     """
-    name = StringField('Name', validators=[DataRequired()])
-    file = FileField()
+    name = StringField('Enter a Name', validators=[DataRequired()])
+    file = FileField('')
     submit = SubmitField('Submit')
 
 

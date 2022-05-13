@@ -10,18 +10,20 @@
         <br/>
         {{ utils.flashed_messages() }}
         <br/>
-        <h1 style="text-align:center;">Images</h1>
+        <h1 style="text-align:center; color:white">IT Analyzer Tool</h1>
+        <p style="text-align:center; color:white">Please upload an image</p>
         {% if images %}
           <hr class="intro-divider">
           <div class="center">
+            <img style="text-align:center" src="https://res.cloudinary.com/dft5iblyz/image/upload/v1652440435/Untitled_design_8_tjlxhg.png">
             <table class="table table-striped table-bordered">
               <thead>
                 <tr>
-                  <th width="15%"> Name </th>
-                  <th width="15%"> Prediction </th>
-                  <th width="15%"> Performance </th>
-                  <th width="15%"> Edit </th>
-                  <th width="15%"> Delete </th>
+                  <th width="15%"> NAME </th>
+                  <th width="15%"> PREDICTION </th>
+                  <th width="15%"> PERFORMANCE </th>
+                  <th width="15%"> EDITION</th>
+                  <th width="15%"> DELETION</th>
                 </tr>
               </thead>
               <tbody>
@@ -52,7 +54,6 @@
           </div>
           <div style="text-align: center">
         {% else %}
-          <div style="text-align: center">
             <h3> No images have been added. </h3>
             <hr class="intro-divider">
         {% endif %}
@@ -60,6 +61,8 @@
             <i class="fa fa-plus"></i>
             Add Img
           </a>
+            <br>
+            <br>
         </div>
       </div>
     </div>
