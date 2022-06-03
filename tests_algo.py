@@ -17,23 +17,23 @@ class TestAlgo(TestCase):
         )
         return app
 
-    def test_prediction_algo(self, app):
+    def test_prediction_algo(self):
 
         form = ImgForm()
-        tester = app.test_client(self)
-        filename = secure_filename(form.file.data.filename)
-        prediction = predict(os.path.join('app/static/uploads/', filename))
-        response = tester.get('/images/add', data=dict(prediction=prediction[0]))
-        self.assertEqual(response,0)
+        if form.validate_on_submit():
+            filename = secure_filename(form.file.data.filename)
+            prediction = predict(os.path.join('app/static/uploads/', filename))
+            response = self.client.get('/images/add', data=dict(prediction=prediction[0]))
+            self.assertEqual(response,0)
 
 
-    def test_performance_algo(self, app):
+    def test_performance_algo(self):
         form = ImgForm()
-        tester = app.test_client(self)
-        filename = secure_filename(form.file.data.filename)
-        prediction = predict(os.path.join('app/static/uploads/', filename))
-        response = tester.get('/images/add', data=dict(out=prediction[1]))
-        self.assertEqual(response,0)
+        if form.validate_on_submit():
+            filename = secure_filename(form.file.data.filename)
+            prediction = predict(os.path.join('app/static/uploads/', filename))
+            response = self.client.get('/images/add', data=dict(out=prediction[1]))
+            self.assertEqual(response,0)
 
 if __name__ == '__main__':
     unittest.main()
