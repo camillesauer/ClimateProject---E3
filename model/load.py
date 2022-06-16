@@ -1,6 +1,7 @@
 import tensorflow as tf
 from keras.models import model_from_json, load_model
 import tensorflow.keras.backend as K
+from keras.models import model_from_yaml
 import numpy as np
 from imageio import imread, imsave
 from PIL import Image
@@ -25,13 +26,11 @@ def init():
     loaded_model_json.compile(loss='binary_crossentropy',optimizer='adam',metrics=['accuracy'])
     return loaded_model_json
 
-
 def predict(path):
     x = imread(path)
     x = np.resize(x,(1,75,75,3))
-    model = init()
-    out = model.predict(x)
-    print(out)
-    response = np.argmax(out,axis=1)
-    print(response)
-    return [response[0], out[0][0]]
+    model=init()
+    out = model.predict(x)[0][0]
+    out = round(out)
+    prediction = model.predict(x)[0][0]
+    return out,  prediction
