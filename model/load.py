@@ -26,11 +26,17 @@ def init():
     loaded_model_json.compile(loss='binary_crossentropy',optimizer='adam',metrics=['accuracy'])
     return loaded_model_json
 
-def predict(path):
-    x = imread(path)
+
+def preprocessing_test(path):
+    x = Image.open(path)
     x = np.resize(x,(1,75,75,3))
+    x = np.array(x)
+    x = (x - x.mean())/255.
+    return x
+
+
+def predict(path):
+    x = preprocessing_test(path)
     model=init()
     out = model.predict(x)[0][0]
-    out = round(out)
-    prediction = model.predict(x)[0][0]
-    return out,  prediction
+    return round(out),  out
