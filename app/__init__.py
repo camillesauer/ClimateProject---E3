@@ -6,7 +6,7 @@ from flask_login import LoginManager
 from flask_migrate import Migrate
 from flask_sqlalchemy import SQLAlchemy
 from flask import abort, Flask, render_template
-
+import os
 # local imports
 from config import app_config
 
