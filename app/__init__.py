@@ -8,16 +8,14 @@ from flask_sqlalchemy import SQLAlchemy
 from flask import abort, Flask, render_template
 import os
 # local imports
-from config import app_config
 
 db = SQLAlchemy()
 login_manager = LoginManager()
 
 def create_app(config_name):
-    my_instance_location = os.path.join('../instance')
-    app = Flask(__name__, instance_path=my_instance_location, instance_relative_config=True)
-    app.config.from_object(app_config[config_name])
-    app.config.from_pyfile('config.py')
+    app = Flask(__name__, instance_relative_config=True)
+    app.config.from_object('config')
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://student:PanapoiC19!@localhost/climatedb'
     Bootstrap(app)
     db.init_app(app)
     login_manager.init_app(app)
