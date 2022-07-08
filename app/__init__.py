@@ -16,7 +16,7 @@ login_manager = LoginManager()
 def create_app(config_name):
     app = Flask(__name__, instance_path=os.path.join(os.path.abspath(os.curdir), 'instance'), instance_relative_config=True)
     app.config.from_object(app_config[config_name])
-    app.config.from_pyfile('config.py')
+    app.config.from_pyfile('instance/config.py')
     Bootstrap(app)
     db.init_app(app)
     login_manager.init_app(app)
