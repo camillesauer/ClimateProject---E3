@@ -4,7 +4,7 @@ from app import db, login_manager
 
 
 # app/models.py
-class User(UserMixin, db.Model):
+class User(db.Model):
     """
     Create an User table
     """
