@@ -16,7 +16,7 @@ def create_app(config_name):
     app = Flask(__name__, instance_relative_config=True)
     app.config.from_object('config')
     app.config['SECRET_KEY'] = 'any secret string'
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://student:PanapoiC19!@localhost/climatedb'
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://student:PanapoiC19!@host/climatedb'
     Bootstrap(app)
     db.init_app(app)
     login_manager.init_app(app)
