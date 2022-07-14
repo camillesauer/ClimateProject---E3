@@ -45,7 +45,7 @@ def add_img():
     if form.validate_on_submit():
         app = Flask(__name__, instance_relative_config=True)
         filename = secure_filename(form.file.data.filename)
-        BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+        BASE_DIR = os.path.abspath(__file__)
         UPLOAD_FOLDER = (
             os.path.join(BASE_DIR, 'static')
         )
