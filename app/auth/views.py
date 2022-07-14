@@ -36,7 +36,7 @@ def login():
 
         # check whether user exists in the database and whether
         # the password entered matches the password in the database
-        user = User.query.filter_by(email=form.email.data).first()
+        user = User.query.get(email=form.email.data).first()
         if user is not None and user.verify_password(
                 form.password.data):
             # log user in
