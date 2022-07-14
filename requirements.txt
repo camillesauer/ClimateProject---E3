@@ -70,6 +70,7 @@ Pillow==9.0.1
 pluggy==1.0.0
 prompt-toolkit==3.0.29
 protobuf==3.19.4
+psycopg2-binary==2.9.3
 ptyprocess==0.7.0
 pure-eval==0.2.2
 py==1.11.0
@@ -93,7 +94,7 @@ stack-data==0.2.0
 tensorboard==2.8.0
 tensorboard-data-server==0.6.1
 tensorboard-plugin-wit==1.8.1
-tensorflow-cpu==2.8.0
+tensorflow==2.8.0
 tensorflow-io-gcs-filesystem==0.24.0
 termcolor==1.1.0
 tf-estimator-nightly==2.8.0.dev2021122109
