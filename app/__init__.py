@@ -6,6 +6,7 @@ from flask_login import LoginManager
 from flask_migrate import Migrate
 from flask_sqlalchemy import SQLAlchemy
 from flask import abort, Flask, render_template
+import os
 import psycopg2
 # local imports
 
@@ -24,6 +25,9 @@ def create_app():
     login_manager.login_message = "You must be logged in to access this page."
     login_manager.login_view = "auth.login"
     Migrate(app, db)
+    APP_ROOT = os.path.dirname(os.path.abspath(__file__))
+    UPLOAD_FOLDER = os.path.join(APP_ROOT, 'static/uploads')
+    app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
     app.config['UPLOAD_EXTENSIONS'] = ['.jpg', '.png', '.gif']
     from app import models
 
