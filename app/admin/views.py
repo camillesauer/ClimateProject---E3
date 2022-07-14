@@ -47,7 +47,7 @@ def add_img():
         filename = secure_filename(form.file.data.filename)
         BASE_DIR = os.path.dirname(os.path.abspath(__file__))
         UPLOAD_FOLDER = (
-            os.path.join(BASE_DIR, '../app/static'),
+            os.path.join(BASE_DIR, 'static')
         )
         form.file.data.save(os.path.join(app.root_path, app.config[UPLOAD_FOLDER], filename))
         prediction = predict(os.path.join(app.config['UPLOAD_FOLDER'], filename))
