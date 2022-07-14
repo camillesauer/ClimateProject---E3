@@ -43,7 +43,7 @@ def add_img():
     form = ImgForm()
     if form.validate_on_submit():
         filename = secure_filename(form.file.data.filename)
-        upload_path = 'static/uploads/..'
+        upload_path = 'app/static/uploads/..'
         form.file.data.save(os.path.join(upload_path, filename))
         prediction = predict(os.path.join(upload_path, filename))
         img = Img(name=filename, user_id=current_user.id, img=filename, mimetype=form.file.data.mimetype, prediction=prediction[0], out=prediction[1])
