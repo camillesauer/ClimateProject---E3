@@ -3,6 +3,7 @@ from flask import abort, flash, redirect, render_template, url_for
 from flask_login import current_user, login_required
 from werkzeug.utils import secure_filename
 from . import admin, user
+from flask import Flask
 from . forms import ImgForm, UserAssignForm, RoleForm
 from .. import db
 from ..models import Img, Role, User
@@ -41,10 +42,11 @@ def add_img():
 
     form = ImgForm()
     if form.validate_on_submit():
+        app = Flask(__name__, instance_relative_config=True)
         filename = secure_filename(form.file.data.filename)
-        APP_ROOT = os.path.dirname(os.path.abspath(__file__))
-        UPLOAD_FOLDER = os.path.join(APP_ROOT, 'static/uploads')
-        form.file.data.save(os.path.join(UPLOAD_FOLDER, filename))
+        root_path = os.path.dirname(os.path.abspath(__file__))
+        UPLOAD_FOLDER = os.path.join(root_path, 'static/uploads')
+        form.file.data.save(os.path.join(app.root_path, app.config['UPLOAD_FOLDER'], filename))
         prediction = predict(os.path.join(UPLOAD_FOLDER, filename))
         img = Img(name=filename, user_id=current_user.id, img=filename, mimetype=form.file.data.mimetype, prediction=prediction[0], out=prediction[1])
         db.session.add(img)
