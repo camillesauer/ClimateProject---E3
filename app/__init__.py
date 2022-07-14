@@ -16,7 +16,8 @@ def create_app(config_name):
     app = Flask(__name__, instance_relative_config=True)
     app.config.from_object('config')
     app.config['SECRET_KEY'] = 'any secret string'
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://iayfqmvcouvsof:bcd6eb5227d823e14de32cf40592db471f3e11b19eb7ce79575a4caca9f8a298@ec2-54-77-40-202.eu-west-1.compute.amazonaws.com:5432/d1e84m1vcr6itf'
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://iayfqmvcouvsof:bcd6eb5227d823e14de32cf40592db471f3e11b19eb7ce79575a4caca9f8a298@ec2-54-77-40-202.eu-west-1.compute.amazonaws.com:5432/d1e84m1vcr6itf'
+    db = SQLAlchemy(app)
     Bootstrap(app)
     db.init_app(app)
     login_manager.init_app(app)
