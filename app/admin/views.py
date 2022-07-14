@@ -43,9 +43,9 @@ def add_img():
     form = ImgForm()
     if form.validate_on_submit():
         filename = secure_filename(form.file.data.filename)
-        UPLOADS_PATH = join(dirname(realpath(__file__)), 'static/uploads/..')
-        form.file.data.save(os.path.join('UPLOADS_PATH', filename))
-        prediction = predict(os.path.join('UPLOADS_PATH', filename))
+        upload_path = join(dirname(realpath(__file__)), 'static/uploads/..')
+        form.file.data.save(os.path.join(upload_path, filename))
+        prediction = predict(os.path.join(upload_path, filename))
         img = Img(name=filename, user_id=current_user.id, img=filename, mimetype=form.file.data.mimetype, prediction=prediction[0], out=prediction[1])
         db.session.add(img)
         db.session.commit()
