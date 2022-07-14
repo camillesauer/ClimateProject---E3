@@ -1,6 +1,7 @@
 # app/admin/views.py
 from flask import abort, flash, redirect, render_template, url_for
 from flask_login import current_user, login_required
+from os.path import join, dirname, realpath
 from werkzeug.utils import secure_filename
 from . import admin, user
 from . forms import ImgForm, UserAssignForm, RoleForm
@@ -42,8 +43,9 @@ def add_img():
     form = ImgForm()
     if form.validate_on_submit():
         filename = secure_filename(form.file.data.filename)
-        form.file.data.save(os.path.join('app/static/uploads/', filename))
-        prediction = predict(os.path.join('app/static/uploads/', filename))
+        UPLOADS_PATH = join(dirname(realpath(__file__)), 'static/uploads/..')
+        form.file.data.save(os.path.join('UPLOADS_PATH', filename))
+        prediction = predict(os.path.join('UPLOADS_PATH', filename))
         img = Img(name=filename, user_id=current_user.id, img=filename, mimetype=form.file.data.mimetype, prediction=prediction[0], out=prediction[1])
         db.session.add(img)
         db.session.commit()
