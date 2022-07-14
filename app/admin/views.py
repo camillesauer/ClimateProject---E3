@@ -9,6 +9,7 @@ from .. import db
 from ..models import Img, Role, User
 import sys
 import os
+import os.path
 sys.path.append(os.path.abspath("/home/apprenant/PycharmProjects/ClimateProject---E3/model"))
 from model.load import predict
 
@@ -44,8 +45,10 @@ def add_img():
     if form.validate_on_submit():
         app = Flask(__name__, instance_relative_config=True)
         filename = secure_filename(form.file.data.filename)
-        root_path = os.path.dirname(os.path.abspath(__file__))
-        app.config['UPLOAD_FOLDER'] = os.path.join('./static/uploads')
+        BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+        UPLOAD_FOLDER = (
+            os.path.join(BASE_DIR, '../app/static'),
+        )
         form.file.data.save(os.path.join(app.root_path, app.config['UPLOAD_FOLDER'], filename))
         prediction = predict(os.path.join(app.config['UPLOAD_FOLDER'], filename))
         img = Img(name=filename, user_id=current_user.id, img=filename, mimetype=form.file.data.mimetype, prediction=prediction[0], out=prediction[1])
