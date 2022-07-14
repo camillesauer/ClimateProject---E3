@@ -6,6 +6,7 @@ from wtforms.validators import DataRequired, Email, EqualTo
 
 from ..models import User
 
+
 class RegistrationForm(FlaskForm):
     """
     Form for users to create new account
