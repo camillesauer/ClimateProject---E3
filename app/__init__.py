@@ -25,9 +25,6 @@ def create_app():
     login_manager.login_message = "You must be logged in to access this page."
     login_manager.login_view = "auth.login"
     Migrate(app, db)
-    APP_ROOT = os.path.dirname(os.path.abspath(__file__))
-    UPLOAD_FOLDER = os.path.join(APP_ROOT, 'static/uploads')
-    app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
     app.config['UPLOAD_EXTENSIONS'] = ['.jpg', '.png', '.gif']
     from app import models
 

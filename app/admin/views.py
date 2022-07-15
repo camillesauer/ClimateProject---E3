@@ -49,8 +49,8 @@ def add_img():
         UPLOAD_FOLDER = (
             os.path.join(BASE_DIR, 'static')
         )
-        form.file.data.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-        prediction = predict(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+        form.file.data.save(os.path.join(UPLOAD_FOLDER, filename))
+        prediction = predict(os.path.join(UPLOAD_FOLDER, filename))
         img = Img(name=filename, user_id=current_user.id, img=filename, mimetype=form.file.data.mimetype, prediction=prediction[0], out=prediction[1])
         db.session.add(img)
         db.session.commit()
