@@ -45,10 +45,11 @@ def add_img():
     if form.validate_on_submit():
         app = Flask(__name__, instance_relative_config=True)
         filename = secure_filename(form.file.data.filename)
-        UPLOAD_FOLDER = 'app/app/static/uploads'
+        UPLOAD_FOLDER = '/uploads'
+        app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
         tbasedir = os.path.abspath(os.path.dirname(__file__))
         print(tbasedir)
-        form.file.data.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+        form.file.data.save(os.path.join(tbasedir, app.config['UPLOAD_FOLDER'], filename))
         prediction = predict(os.path.join(app.config['UPLOAD_FOLDER'], filename))
         img = Img(name=filename, user_id=current_user.id, img=filename, mimetype=form.file.data.mimetype, prediction=prediction[0], out=prediction[1])
         db.session.add(img)
