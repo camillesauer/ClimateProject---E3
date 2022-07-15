@@ -45,7 +45,7 @@ def add_img():
     if form.validate_on_submit():
         app = Flask(__name__, instance_relative_config=True)
         filename = secure_filename(form.file.data.filename)
-        UPLOAD_FOLDER = 'app/app/admin/uploads'
+        UPLOAD_FOLDER = '/app/admin/uploads'
         app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
         form.file.data.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
         prediction = predict(os.path.join(app.config['UPLOAD_FOLDER'], filename))
