@@ -11,7 +11,15 @@ import sys
 import os
 sys.path.append(os.path.abspath("./app/"))
 from app.models import Img
+import numpy
+from psycopg2.extensions import register_adapter, AsIs
 
+def addapt_numpy_float32(numpy_float32):
+    return AsIs(numpy_float32)
+def addapt_numpy_int32(numpy_int32):
+    return AsIs(numpy_int32)
+register_adapter(numpy.float32, addapt_numpy_float32)
+register_adapter(numpy.int32, addapt_numpy_int32)
 
 def init():
     json_file = open('./model/cnn.json', 'r')
