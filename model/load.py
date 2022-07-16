@@ -9,17 +9,17 @@ import re
 import pandas
 import sys
 import os
-sys.path.append(os.path.abspath("/home/apprenant/PycharmProjects/ClimateProject---E3/app/"))
+sys.path.append(os.path.abspath("./app/"))
 from app.models import Img
 
 
 def init():
-    json_file = open('/home/apprenant/PycharmProjects/ClimateProject---E3/model/cnn.json', 'r')
+    json_file = open('./model/cnn.json', 'r')
     loaded_model_json = json_file.read()
     json_file.close()
     loaded_model_json = model_from_json(loaded_model_json)
     #load weights into new model
-    loaded_model_json.load_weights("/home/apprenant/PycharmProjects/ClimateProject---E3/model/cnn.h5")
+    loaded_model_json.load_weights("./model/cnn.h5")
     print("Loaded Model from disk")
 
     #compile and evaluate loaded model
