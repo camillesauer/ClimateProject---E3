@@ -75,7 +75,7 @@ class Img(db.Model):
     Create an Image table
     """
     id = db.Column(db.Integer, primary_key=True)
-    img = db.Column(db.String(1000), unique=True, nullable=False)
+    img = db.Column(db.String(1000), nullable=False)
     name = db.Column(db.String(1000), nullable=False)
     mimetype = db.Column(db.String(1000), nullable=False)
     prediction = db.Column(db.String(1000), nullable=True)
